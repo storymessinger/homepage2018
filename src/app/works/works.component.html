@@ -1,0 +1,18 @@
+<div id="background"></div>
+<div class="main container" >
+  
+  <ng-container *ngFor="let project of projects ">
+    <div [id]=project.id (mouseenter)="opacityToZero($event)" (mouseleave)="opacityToOne()" class="project">
+
+      <div *ngFor="let item of project.list; let i = index" class="project__img" [ngStyle]="{'background-color': white}">
+        <div class="project__img__container" [routerLink]='["/detail", item.projectId]'>
+          <img [ngClass]="{'hide': isOpacity == 0 && opacityTo() != item.projectId }" [src]="item.smallimg">
+          <h5 *ngIf="i == 0" class="project__title">{{project.name}} <span>{{project.year}}</span></h5>
+        </div>
+      </div>
+      <div class="project__spacer"></div>
+    </div>
+  </ng-container>
+  <router-outlet></router-outlet>
+
+</div>

@@ -1,0 +1,36 @@
+.contentSingle{
+    // background-color: #9E8777;
+    background-color: #C7B7AB;
+    margin: 0px 10% 0 10%; 
+    // overflow-x:hidden;
+
+    ::-webkit-scrollbar {
+        width: 25px;
+    }
+
+}
+
+.workDetail {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    // margin: auto;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    margin-top: 33px;
+    margin-bottom : 66px;
+    p {
+        color: #707070;
+        font-size: 16px;
+        font-family: 'relative-mono10pitch';
+    }
+}
+
+// @media (min-width: 768px) {
+//     .contentSingle {
+//         margin: 180px 3% 0 3%;
+//     }
+// }
