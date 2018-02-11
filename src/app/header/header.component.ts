@@ -62,14 +62,19 @@ export class HeaderComponent implements OnInit {
           let MY = p.winMouseY;
           if( MX < p.windowWidth / 4) { MX = p.windowWidth / 4 };
           if( MX > p.windowWidth * 3/4) { MX = p.windowWidth * 3/4 };
-          if( MY > p.windowHeight / 2) { MY = p.windowHeight / 2 };
+          if( MY > p.windowHeight / 3) { MY = p.windowHeight / 3 };
           
           let x = MX * (p.width/p.windowWidth);
-          let y = MY * (p.height/p.windowHeight) + w/4;
+          let y = MY * (p.height/p.windowHeight) + w/2.5;
 
           // console.log(p.winMouseX, p.winMouseY);
 
-          p.fill(120,120,120);
+          if( p.mouseX > 0 && p.mouseX < p.width && p.mouseY > 0 && p.mouseY < p.height) {
+            p.fill('#F4FF69');
+          } else {
+            p.fill(120,120,120);
+          }
+
           p.rect(x-w/4,y-w/4,w/2,w/2);
         }
 
