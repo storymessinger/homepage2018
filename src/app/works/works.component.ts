@@ -26,22 +26,22 @@ export class WorksComponent implements OnInit {
     "list" : [ {
       "bigimg" : "./../../assets/Works/2014_Primrose/img/pic01-big.jpg",
       "color" : "rgba(52,52,52,0.9)",
-      "projectId" : 'primrose',
+      "projectId" : 1,
       "smallimg" : "./../../assets/Works/2014_Primrose/img/pic01-small.jpg"
     }, {
       "bigimg" : "./../../assets/Works/2014_Primrose/img/pic02-big.jpg",
       "color" : "rgba(52,52,52,0.9)",
-      "projectId" : 'primrose',
+      "projectId" : 1,
       "smallimg" : "./../../assets/Works/2014_Primrose/img/pic02-small.jpg"
     }, {
       "bigimg" : "./../../assets/Works/2014_Primrose/img/pic03-big.jpg",
       "color" : "rgba(52,52,52,0.9)",
-      "projectId" : 'primrose',
+      "projectId" : 1,
       "smallimg" : "./../../assets/Works/2014_Primrose/img/pic03-small.jpg"
     }, {
       "bigimg" : "./../../assets/Works/2014_Primrose/img/pic04-big.jpg",
       "color" : "rgba(52,52,52,0.9)",
-      "projectId" : 'primrose',
+      "projectId" : 1,
       "smallimg" : "./../../assets/Works/2014_Primrose/img/pic04-small.jpg"
     } ],
     "month" : 11,

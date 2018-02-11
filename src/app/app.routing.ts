@@ -23,7 +23,7 @@ export const routerConfig: Routes = [
         component : WorksDetailBaseComponent,
         children: [
            {
-               path: 'primrose',
+               path: '1',
                component: PrimroseComponent
            } 
             
