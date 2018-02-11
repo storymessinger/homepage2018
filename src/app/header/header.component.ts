@@ -88,6 +88,11 @@ export class HeaderComponent implements OnInit {
     };
     let myp5 = new p5(sketch);
   }
+
+  eyeBlink(){
+    // this.eyeBlinkService.blink = true;
+  }
+
 }
   //   var sketch2 = function( p ) {
 
@@ -201,9 +206,6 @@ export class HeaderComponent implements OnInit {
   //   let myp52 = new p5(sketch);
   // }
 
-  // eyeBlink(){
-  //   // this.eyeBlinkService.blink = true;
-  // }
 
 // }
     
