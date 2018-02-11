@@ -50,9 +50,11 @@ export class HeaderComponent implements OnInit {
       class Eye {
 
         width:number;
+        highlight;
 
         constructor(width:number) {
           this.width = width;
+          this.highlight = '#F4FF69';
           
         }
 
@@ -60,9 +62,9 @@ export class HeaderComponent implements OnInit {
           let w = this.width;
           let MX = p.winMouseX;
           let MY = p.winMouseY;
-          if( MX < p.windowWidth / 4) { MX = p.windowWidth / 4 };
-          if( MX > p.windowWidth * 3/4) { MX = p.windowWidth * 3/4 };
-          if( MY > p.windowHeight / 3) { MY = p.windowHeight / 3 };
+          if( MX < p.windowWidth / 3) { MX = p.windowWidth / 3 };
+          if( MX > p.windowWidth * 2/3) { MX = p.windowWidth * 2/3 };
+          if( MY > p.windowHeight / 3.5) { MY = p.windowHeight / 3.5 };
           
           let x = MX * (p.width/p.windowWidth);
           let y = MY * (p.height/p.windowHeight) + w/2.5;
@@ -70,7 +72,12 @@ export class HeaderComponent implements OnInit {
           // console.log(p.winMouseX, p.winMouseY);
 
           if( p.mouseX > 0 && p.mouseX < p.width && p.mouseY > 0 && p.mouseY < p.height) {
-            p.fill('#F4FF69');
+            if (p.frameCount % 10 == 0) {
+              this.highlight = p.random(['#FF76DA','#48F1FF','#F4FF69']);
+              p.fill(this.highlight);
+            } else {
+              p.fill(this.highlight);
+            }
           } else {
             p.fill(120,120,120);
           }

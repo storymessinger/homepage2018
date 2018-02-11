@@ -56,11 +56,11 @@ export class BackgroundService {
         setup(){
 
           this.shape = this.shape_choice[Math.floor(Math.random() * this.shape_choice.length)];
-          this.sizeVal = this.getRandom(7, 10); // Size of shpaes
-          this.upVal = this.getRandom(0.3, 0.5); // going up speed
-          this.sideVal = this.getRandom(0.005, 0.005); // going left or right speed
-          this.sideAcc = this.getRandom(0.05, 0.07); // sideways frequency
-          this.angleAcc = this.getRandom(0.1, 0.15);
+          this.sizeVal = this.getRandom(8, 8); // Size of shpaes
+          this.upVal = this.getRandom(0.2, 0.4); // going up speed
+          this.sideVal = this.getRandom(0.5, 0.5); // going left or right speed
+          this.sideAcc = this.getRandom(0.1, 0.25); // sideways frequency
+          this.angleAcc = this.getRandom(0.3, 0.4);
           this.highlight = p.random(['#FF76DA','#48F1FF'])
           
           if ( this.first === true ) {
