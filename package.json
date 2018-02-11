@@ -4,8 +4,8 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "build": "ng build --prod",
-    "postinstall": "ng build --aot --prod",
+    "build": "ng build -prod",
+    "postinstall": "ng build --aot -prod",
     "start": "node server.js",
     "deploy": "git push origin master && git push heroku master",
     "test": "ng test",
@@ -19,6 +19,9 @@
   "private": true,
   "dependencies": {
     "@types/node": "~6.0.60",
+    "@angular/language-service": "^5.2.0",
+    "@types/jasmine": "~2.8.3",
+    "@types/jasminewd2": "~2.0.2",
     "@angular/animations": "^5.2.0",
     "@angular/cli": "1.6.7",
     "@angular/compiler-cli": "^5.2.0",
@@ -39,9 +42,6 @@
     "zone.js": "^0.8.19"
   },
   "devDependencies": {
-    "@angular/language-service": "^5.2.0",
-    "@types/jasmine": "~2.8.3",
-    "@types/jasminewd2": "~2.0.2",
     "codelyzer": "^4.0.1",
     "jasmine-core": "~2.8.0",
     "jasmine-spec-reporter": "~4.2.1",
