@@ -14,9 +14,6 @@ export class HeaderComponent implements OnInit {
 
 
   // @HostListener('window:resize') onresize() {
-  //   console.log('resize');
-  //   console.log(window.innerWidth);
-  //   console.log(window.innerHeight);
   // }
   
   constructor(
@@ -48,11 +45,8 @@ export class HeaderComponent implements OnInit {
       }
 
       p.draw = function() {
-        // console.log(self.click);
-        // eye.update(self.eyeBlinkService.blink);
         p.background(5,5,5);
         eye.update(blinkTheEye);
-        console.log(blinkTheEye);
         eye.render();
         blinkTheEye = false;
       };
@@ -96,7 +90,6 @@ export class HeaderComponent implements OnInit {
           let x = MX * (p.width/p.windowWidth);
           let y = MY * (p.height/p.windowHeight) + w/2.5;
 
-          // console.log(p.winMouseX, p.winMouseY);
 
           if( p.mouseX > 0 && p.mouseX < p.width && p.mouseY > 0 && p.mouseY < p.height) {
             if (p.frameCount % 10 == 0) {
