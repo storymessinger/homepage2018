@@ -26,8 +26,42 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
     let self = this;
+
+
+    var sketch = function ( p) {
+
+      let eye;
+      let widthOfEye = 120;
+
+      p.setup = function() {
+        let myCanvas = p.createCanvas(widthOfEye, widthOfEye);
+        myCanvas.parent('eyeContainer');
+        eye = new Eye(widthOfEye);
+      };
+
+      p.draw = function() {
+        // console.log(self.click);
+        // eye.update(self.eyeBlinkService.blink);
+        eye.render(widthOfEye);
+        // self.eyeBlinkService.blink = false;
+      };
+
+      class Eye {
+
+        constructor(width:number) {
+          
+        }
+
+      }
+
+    };
+    let myp5 = new p5(sketch);
     
-    var sketch = function( p ) {
+
+
+
+
+    var sketch2 = function( p ) {
 
       let eye;
       let widthOfEye = 120;
@@ -39,7 +73,6 @@ export class HeaderComponent implements OnInit {
           widthOfEye = 100;
         }
       }
-
 
       p.windowResized = function() {
         resizeEye()
@@ -137,7 +170,7 @@ export class HeaderComponent implements OnInit {
         }
       }
     };
-    let myp5 = new p5(sketch);
+    let myp52 = new p5(sketch);
   }
 
   eyeBlink(){
