@@ -22,5 +22,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
   }
 
-
+  eyeBlink(){
+    // this.eyeBlinkService.blink = true;
+  }
 }
