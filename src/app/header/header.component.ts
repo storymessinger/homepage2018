@@ -32,7 +32,7 @@ export class HeaderComponent implements OnInit {
       let blinkTheEye = false;
 
       p.setup = function() {
-        let myCanvas = p.createCanvas(widthOfEye, widthOfEye);
+        let myCanvas = p.createCanvas(widthOfEye, widthOfEye+30+30);
         myCanvas.parent('eyeContainer');
         eye = new Eye(widthOfEye);
         randomBlink();
@@ -45,7 +45,7 @@ export class HeaderComponent implements OnInit {
       }
 
       p.draw = function() {
-        p.background(5,5,5);
+        p.background(0,0,0,0);
         eye.update(blinkTheEye);
         eye.render();
         blinkTheEye = false;
@@ -54,19 +54,19 @@ export class HeaderComponent implements OnInit {
 
       class Eye {
 
-        width:number;
+        eyeWidth:number;
         highlight;
         setEyebrows;
         blinking;
         eye_lid = { y: 0, eyebrow: 0 };
 
-        constructor(width:number) {
-          this.width = width;
+        constructor(EyeWidth:number) {
+          this.eyeWidth = EyeWidth;
           this.highlight = '#F4FF69';
           this.blinking = false;
           
           this.setEyebrows = new TimelineMax({paused:true})
-            .to( this.eye_lid, 0.4, { y: this.width, eyebrow: 0, ease: Power4.easeOut } )
+            .to( this.eye_lid, 0.4, { y: this.eyeWidth, eyebrow: 0, ease: Power4.easeOut } )
             .to( this.eye_lid, 0.6, { y: 0 , eyebrow: 0, ease: Power4.easeOut } );
           // this.setEyebrows.repeat(-1).yoyo(true).repeatDelay(8).play();
           this.setEyebrows.play();
@@ -79,18 +79,9 @@ export class HeaderComponent implements OnInit {
           }
         }
 
-        dongza() {
-          let w = this.width;
-          let MX = p.winMouseX;
-          let MY = p.winMouseY;
-          if( MX < p.windowWidth / 3) { MX = p.windowWidth / 3 };
-          if( MX > p.windowWidth * 2/3) { MX = p.windowWidth * 2/3 };
-          if( MY > p.windowHeight / 3.5) { MY = p.windowHeight / 3.5 };
-          
-          let x = MX * (p.width/p.windowWidth);
-          let y = MY * (p.height/p.windowHeight) + w/2.5;
+        eye_interaction() {
 
-
+          // Make eye shine with hightlight colors
           if( p.mouseX > 0 && p.mouseX < p.width && p.mouseY > 0 && p.mouseY < p.height) {
             if (p.frameCount % 10 == 0) {
               this.highlight = p.random(['#FF76DA','#48F1FF','#F4FF69']);
@@ -102,21 +93,56 @@ export class HeaderComponent implements OnInit {
             p.fill(120,120,120);
           }
 
-          p.rect(x-w/4,y-w/4,w/2,w/2);
+          // Make eye move depending on the position of the mouse in the window
+          let eye = this.eyeWidth;
+
+          let MX = p.winMouseX;
+          let MY = p.winMouseY;
+          if( MX < p.windowWidth * 0.3) { MX = p.windowWidth * 0.3 };
+          if( MX > p.windowWidth * 0.7) { MX = p.windowWidth * 0.7 };
+          if( MY < p.windowHeight * 0.1) { MY = p.windowHeight * 0.1 };
+          if( MY > p.windowHeight * 0.33) { MY = p.windowHeight * 0.33 };
+
+
+          let x = MX * (p.width/p.windowWidth); 
+          let y = MY * (p.height/p.windowHeight) + eye/8;
+          p.rect(x-eye/4,y-eye/4 + 30,eye/2.2,eye/2.2);
         }
 
 
         render() {
-          let w = this.width;
+          let w = this.eyeWidth;
+
+            p.stroke(120,120,120);
+            p.strokeWeight(4);
+            p.line(17,18,20,30);
+            p.line(40,15,40,40);
+            p.line(63,18,60,30);
+          // if( this.eye_lid.y < 20 ) {
+          //   p.stroke(120,120,120);
+          //   p.strokeWeight(4);
+          //   p.line(15,15,20,30);
+          //   p.line(40,12,40,40);
+          //   p.line(65,15,60,30);
+          // }
+          // if( this.eye_lid.y > 60 ) {
+          //   p.stroke(120,120,120);
+          //   p.strokeWeight(4);
+          //   p.line(15,115,20,110);
+          //   p.line(40,120,40,110);
+          //   p.line(65,115,60,110);
+          // }
+
           p.noStroke();
           p.fill(250,250,250);
-          p.rect(0,0,w,w);
+          p.rect(0,0 + 30, w, w);
 
-          this.dongza();
-          
+          this.eye_interaction();
+
           p.noStroke();
           p.fill('#FFB989');
-          p.rect(0,0,this.width,this.eye_lid.y);
+          p.rect(0,0 + 30,this.eyeWidth,this.eye_lid.y);
+
         }
 
       }
