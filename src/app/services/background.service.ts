@@ -19,6 +19,7 @@ export class BackgroundService {
         myCanvas.parent(parent);
         // myCanvas.parent('back');
         myCanvas.elt.style.position = "fixed"; 
+        // myCanvas.style('z-index', '-2');
         // position the canvas to fixed     };
         // boxes = new Boxes(p.windowWidth, p.windowHeight, time);
       }

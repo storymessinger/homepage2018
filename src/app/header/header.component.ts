@@ -109,7 +109,7 @@ export class HeaderComponent implements OnInit {
         render() {
           let w = this.width;
           p.noStroke();
-          p.fill(255,255,255);
+          p.fill(250,250,250);
           p.rect(0,0,w,w);
 
           this.dongza();

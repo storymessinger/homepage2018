@@ -1,6 +1,8 @@
+@import './../../../color';
+
 .contentSingle{
     // background-color: #9E8777;
-    background-color: #C7B7AB;
+    background-color: $white;
     margin: 0px 10% 0 10%; 
     // overflow-x:hidden;
 
@@ -19,18 +21,24 @@
 
 footer {
     display: flex;
+    position: relative;
     justify-content: center;
-    margin-top: 33px;
-    margin-bottom : 66px;
+    background-color: $gray;
+    padding: 10px 0;
+    margin: 0px 10% 0 10%; 
     p {
-        color: #707070;
-        font-size: 16px;
+        color: $black;
+        font-size: 13px;
         font-family: 'relative-mono10pitch';
     }
 }
 
-// @media (min-width: 768px) {
-//     .contentSingle {
-//         margin: 180px 3% 0 3%;
-//     }
-// }
+@media (max-width: 550px) {
+    .contentSingle{ 
+        margin: 0;
+    }
+    footer {
+        margin: 0;
+    }
+}
+
