@@ -11,6 +11,10 @@ import { IntroComponent } from './intro/intro.component';
 import { WorksComponent } from './works/works.component';
 import { PrimroseComponent } from './worksDetail/primrose/primrose.component';
 import { WorksDetailBaseComponent } from './worksDetail/works-detail-base/works-detail-base.component';
+import { AboutComponent } from './about/about.component';
+import { ConsumerComponent } from './worksDetail/consumer/consumer.component';
+import { MusicalComponent } from './worksDetail/musical/musical.component';
+import { HokComponent } from './worksDetail/hok/hok.component';
 
 
 @NgModule({
@@ -20,7 +24,11 @@ import { WorksDetailBaseComponent } from './worksDetail/works-detail-base/works-
     IntroComponent,
     WorksComponent,
     PrimroseComponent,
-    WorksDetailBaseComponent
+    WorksDetailBaseComponent,
+    AboutComponent,
+    ConsumerComponent,
+    MusicalComponent,
+    HokComponent
   ],
   imports: [
     BrowserModule,

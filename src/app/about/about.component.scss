@@ -1,0 +1,29 @@
+@import './../../color';
+
+html, body {
+    font-family : 'relative-book', monospace;
+}
+.container {
+    display: flex;
+    justify-content : center;
+    align-items: center;
+    height: 6000px;
+}
+.text {
+    position: fixed;
+    top: 500px;
+    left:150px;
+    font-size: 28px;
+    color: $black;
+}
+.dud {
+    color: $darkgary;
+}
+
+#test {
+    position: absolute;
+    top: 3000px;
+    width: 100px;
+    height:400px;
+    background-color:black;
+}
