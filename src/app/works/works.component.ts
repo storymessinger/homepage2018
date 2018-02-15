@@ -63,7 +63,20 @@ export class WorksComponent implements OnInit {
   }, {
     "date" : 20150601,
     "id" : 3,
-    "name" : "Dustatic; window filter for your house",
+    "list" : [ {
+      "projectId" : 3,
+      "smallimg" : "./../../assets/Works/2015_Dustatic/img/pic04-small.jpg"
+    }, {
+      "projectId" : 3,
+      "smallimg" : "./../../assets/Works/2015_Dustatic/img/pic01-small.jpg"
+    }, {
+      "projectId" : 3,
+      "smallimg" : "./../../assets/Works/2015_Dustatic/img/pic06-small.jpg"
+    }, {
+      "projectId" : 3,
+      "smallimg" : "./../../assets/Works/2015_Dustatic/img/pic05-small.jpg"
+    } ],
+    "name" : "Dustatic; Window filter for your health",
     "year" : 2015
   }, {
     "date" : 20150801,

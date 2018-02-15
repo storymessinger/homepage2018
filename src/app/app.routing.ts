@@ -1,3 +1,4 @@
+import { DustaticComponent } from './worksDetail/dustatic/dustatic.component';
 import { HokComponent } from './worksDetail/hok/hok.component';
 import { MusicalComponent } from './worksDetail/musical/musical.component';
 import { ConsumerComponent } from './worksDetail/consumer/consumer.component';
@@ -37,6 +38,10 @@ export const routerConfig: Routes = [
            {
                path: '2',
                component: HokComponent 
+           }, 
+           {
+               path: '3',
+               component: DustaticComponent 
            }, 
            {
                path: '6',

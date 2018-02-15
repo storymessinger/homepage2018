@@ -15,6 +15,7 @@ import { AboutComponent } from './about/about.component';
 import { ConsumerComponent } from './worksDetail/consumer/consumer.component';
 import { MusicalComponent } from './worksDetail/musical/musical.component';
 import { HokComponent } from './worksDetail/hok/hok.component';
+import { DustaticComponent } from './worksDetail/dustatic/dustatic.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { HokComponent } from './worksDetail/hok/hok.component';
     AboutComponent,
     ConsumerComponent,
     MusicalComponent,
-    HokComponent
+    HokComponent,
+    DustaticComponent
   ],
   imports: [
     BrowserModule,
