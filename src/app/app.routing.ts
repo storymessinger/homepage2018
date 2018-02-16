@@ -1,3 +1,7 @@
+import { DoradoraComponent } from './worksDetail/doradora/doradora.component';
+import { ChurrosComponent } from './worksDetail/churros/churros.component';
+import { StartkaistComponent } from './worksDetail/startkaist/startkaist.component';
+import { BanbanComponent } from './worksDetail/banban/banban.component';
 import { CatshelterComponent } from './worksDetail/catshelter/catshelter.component';
 import { DustaticComponent } from './worksDetail/dustatic/dustatic.component';
 import { HokComponent } from './worksDetail/hok/hok.component';
@@ -9,6 +13,7 @@ import { PrimroseComponent } from './worksDetail/primrose/primrose.component';
 import { WorksComponent } from './works/works.component';
 import { IntroComponent } from './intro/intro.component';
 import { Routes, RouterModule } from "@angular/router";
+import { SoundcloudComponent } from './worksDetail/soundcloud/soundcloud.component';
 
 export const routerConfig: Routes = [
     { 
@@ -49,12 +54,32 @@ export const routerConfig: Routes = [
                component: CatshelterComponent
            }, 
            {
+               path: '5',
+               component: BanbanComponent 
+           }, 
+           {
                path: '6',
                component: ConsumerComponent 
            }, 
            {
                path: '7',
                component: MusicalComponent 
+           }, 
+           {
+               path: '8',
+               component: StartkaistComponent 
+           }, 
+           {
+               path: '10',
+               component: ChurrosComponent 
+           }, 
+           {
+               path: '11',
+               component: SoundcloudComponent 
+           }, 
+           {
+               path: '12',
+               component: DoradoraComponent 
            }, 
             
         ]

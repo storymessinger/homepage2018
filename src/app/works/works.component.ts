@@ -107,7 +107,7 @@ export class WorksComponent implements OnInit {
       "smallimg" : "./../../assets/Works/2015_Banban/img/pic03-small.jpg"
     }, {
       "projectId" : 5,
-      "smallimg" : "./../../assets/Works/2015_Banban/img/pic04-small.jpg"
+      "smallimg" : "./../../assets/Works/2015_Banban/img/pic05-small.jpg"
     } ],
     "name" : "BanBan App Project (Naver UXDP)",
     "year" : 2015
