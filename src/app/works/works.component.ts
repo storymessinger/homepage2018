@@ -194,7 +194,7 @@ export class WorksComponent implements OnInit {
       "projectId" : 10,
       "smallimg" : "./../../assets/Works/2016_ChurrosPrinter/img/pic05-small.jpg"
     } ],
-    "name" : "Churros Printer : Food 3d print Machine",
+    "name" : "Churros Printer : Food 3d print machine",
     "year" : 2016
   }, {
     "date" : 20141101,
