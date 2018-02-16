@@ -177,17 +177,17 @@ export class WorksComponent implements OnInit {
       "color" : "#d6d6d6",
       "projectId" : 10,
       "smallimg" : "./../../assets/Works/2016_ChurrosPrinter/img/pic01-small.jpg"
-    }, null, {
+      }, {
       "bigimg" : "./../../assets/Works/2016_ChurrosPrinter/img/pic03-big.jpg",
       "color" : "#d6d6d6",
       "projectId" : 10,
       "smallimg" : "./../../assets/Works/2016_ChurrosPrinter/img/pic03-small.jpg"
-    }, {
+      }, {
       "bigimg" : "./../../assets/Works/2016_ChurrosPrinter/img/pic04-big.jpg",
       "color" : "#d6d6d6",
       "projectId" : 10,
       "smallimg" : "./../../assets/Works/2016_ChurrosPrinter/img/pic04-small.jpg"
-    }, {
+      }, {
       "bigimg" : "./../../assets/Works/2016_ChurrosPrinter/img/pic05-big.jpg",
       "color" : "#d6d6d6",
       "projectId" : 10,
@@ -198,18 +198,47 @@ export class WorksComponent implements OnInit {
   }, {
     "date" : 20141101,
     "id" : 11,
+    "list" : [ {
+      "projectId" : 11,
+      "smallimg" : "./../../assets/Works/2016_StartupKaistLogo/img/pic01-small.jpg"
+    }, {
+      "projectId" : 11,
+      "smallimg" : "./../../assets/Works/2016_StartupKaistLogo/img/pic02-small.jpg"
+    }, {
+      "projectId" : 11,
+      "smallimg" : "./../../assets/Works/2016_StartupKaistLogo/img/pic03-small.jpg"
+    } ],
     "name" : "Soundcloud Redesign Project",
     "year" : 2014
   }, {
     "date" : 20141001,
     "id" : 12,
+    "list" : [ {
+      "projectId" : 12,
+      "smallimg" : "./../../assets/Works/2016_StartupKaistLogo/img/pic01-small.jpg"
+    }, {
+      "projectId" : 12,
+      "smallimg" : "./../../assets/Works/2016_StartupKaistLogo/img/pic02-small.jpg"
+    }, {
+      "projectId" : 12,
+      "smallimg" : "./../../assets/Works/2016_StartupKaistLogo/img/pic03-small.jpg"
+    } ],
     "name" : "Doradora; Interactive spinning game",
     "year" : 2014
-  }
-  // , 
-  // {
+  } 
+  // ,{
   //   "date" : 20171201,
   //   "id" : 13,
+  //   "list" : [ {
+  //     "projectId" : 13,
+  //     "smallimg" : "./../../assets/Works/2016_StartupKaistLogo/img/pic01-small.jpg"
+  //   }, {
+  //     "projectId" : 13,
+  //     "smallimg" : "./../../assets/Works/2016_StartupKaistLogo/img/pic02-small.jpg"
+  //   }, {
+  //     "projectId" : 13,
+  //     "smallimg" : "./../../assets/Works/2016_StartupKaistLogo/img/pic03-small.jpg"
+  //   } ],
   //   "name" : "Study on Design-in-use Process Through a Hackable Product",
   //   "year" : 2017
   // } 

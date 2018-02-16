@@ -16,6 +16,12 @@ import { ConsumerComponent } from './worksDetail/consumer/consumer.component';
 import { MusicalComponent } from './worksDetail/musical/musical.component';
 import { HokComponent } from './worksDetail/hok/hok.component';
 import { DustaticComponent } from './worksDetail/dustatic/dustatic.component';
+import { CatshelterComponent } from './worksDetail/catshelter/catshelter.component';
+import { BanbanComponent } from './worksDetail/banban/banban.component';
+import { StartkaistComponent } from './worksDetail/startkaist/startkaist.component';
+import { ChurrosComponent } from './worksDetail/churros/churros.component';
+import { SoundcloudComponent } from './worksDetail/soundcloud/soundcloud.component';
+import { DoradoraComponent } from './worksDetail/doradora/doradora.component';
 
 
 @NgModule({
@@ -30,7 +36,13 @@ import { DustaticComponent } from './worksDetail/dustatic/dustatic.component';
     ConsumerComponent,
     MusicalComponent,
     HokComponent,
-    DustaticComponent
+    DustaticComponent,
+    CatshelterComponent,
+    BanbanComponent,
+    StartkaistComponent,
+    ChurrosComponent,
+    SoundcloudComponent,
+    DoradoraComponent
   ],
   imports: [
     BrowserModule,

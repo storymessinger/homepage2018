@@ -1,3 +1,4 @@
+import { CatshelterComponent } from './worksDetail/catshelter/catshelter.component';
 import { DustaticComponent } from './worksDetail/dustatic/dustatic.component';
 import { HokComponent } from './worksDetail/hok/hok.component';
 import { MusicalComponent } from './worksDetail/musical/musical.component';
@@ -42,6 +43,10 @@ export const routerConfig: Routes = [
            {
                path: '3',
                component: DustaticComponent 
+           }, 
+           {
+               path: '4',
+               component: CatshelterComponent
            }, 
            {
                path: '6',
