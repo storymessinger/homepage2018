@@ -2,7 +2,7 @@
 
 
 .single {
-    padding-top: 140px; 
+    padding-top: 100px; 
     padding-bottom: 180px;
     width: 960px;
     color: $black;
@@ -31,8 +31,6 @@
     bottom: 70px;
     left: 70px;
 
-    // width: 500px;
-
     pre {
         font-family: 'relative-bold';
         font-size: 70px;
@@ -41,7 +39,6 @@
     }
 
     .underline {
-        // background-image: linear-gradient(to right, #9E8777 100%);
         background-image: url(../../../assets/imgs/textbg2.png);
         display: inline;
         background-size:auto 289px;
@@ -70,7 +67,7 @@
         left:0;
         font-size: 13px;
         font-family: 'relative-mono10pitch';
-        p {
+        p, a {
             margin:0;
         }
     }

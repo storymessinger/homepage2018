@@ -56,6 +56,46 @@ body {
         -webkit-overflow-scrolling: touch;
 }
 
+
+// underline
+$underlineColor: #333333;
+$underlineHeight: 1%;
+
+a:visited {
+    color: #333333;
+}
+
+.link_underline {
+  position: relative;
+  text-decoration: none;
+  display: inline-block;
+  padding: 0 1px;
+  transition: color ease 0.25s;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: $underlineHeight;
+    left: 0;
+    bottom: 0;
+    background-color: $underlineColor;
+    transition: all ease 0.3s;
+  }
+  
+  &:hover {
+    color: white;
+    
+    &::after {
+      height: 100%;
+    }
+  }
+}
+
+
+
+
 // font sizes
 @media (min-width: 415px) {
     html{

@@ -201,32 +201,33 @@ export class WorksComponent implements OnInit {
     "id" : 11,
     "list" : [ {
       "projectId" : 11,
-      "smallimg" : "./../../assets/Works/2016_StartupKaistLogo/img/pic01-small.jpg"
+      "smallimg" : "./../../assets/Works/2014_SoundCloudProject/img/pic01-small.jpg"
     }, {
       "projectId" : 11,
-      "smallimg" : "./../../assets/Works/2016_StartupKaistLogo/img/pic02-small.jpg"
+      "smallimg" : "./../../assets/Works/2014_SoundCloudProject/img/pic02-small.jpg"
     }, {
       "projectId" : 11,
-      "smallimg" : "./../../assets/Works/2016_StartupKaistLogo/img/pic03-small.jpg"
+      "smallimg" : "./../../assets/Works/2014_SoundCloudProject/img/pic03-small.jpg"
     } ],
     "name" : "Soundcloud Redesign Project",
     "year" : 2014
-  }, {
-    "date" : 20141001,
-    "id" : 12,
-    "list" : [ {
-      "projectId" : 12,
-      "smallimg" : "./../../assets/Works/2016_StartupKaistLogo/img/pic01-small.jpg"
-    }, {
-      "projectId" : 12,
-      "smallimg" : "./../../assets/Works/2016_StartupKaistLogo/img/pic02-small.jpg"
-    }, {
-      "projectId" : 12,
-      "smallimg" : "./../../assets/Works/2016_StartupKaistLogo/img/pic03-small.jpg"
-    } ],
-    "name" : "Doradora; Interactive spinning game",
-    "year" : 2014
-  } 
+  }
+  // , {
+  //   "date" : 20141001,
+  //   "id" : 12,
+  //   "list" : [ {
+  //     "projectId" : 12,
+  //     "smallimg" : "./../../assets/Works/2016_StartupKaistLogo/img/pic01-small.jpg"
+  //   }, {
+  //     "projectId" : 12,
+  //     "smallimg" : "./../../assets/Works/2016_StartupKaistLogo/img/pic02-small.jpg"
+  //   }, {
+  //     "projectId" : 12,
+  //     "smallimg" : "./../../assets/Works/2016_StartupKaistLogo/img/pic03-small.jpg"
+  //   } ],
+  //   "name" : "Doradora; Interactive spinning game",
+  //   "year" : 2014
+  // } 
   // ,{
   //   "date" : 20171201,
   //   "id" : 13,

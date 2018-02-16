@@ -14,49 +14,45 @@ export class AboutComponent implements OnInit {
 
   constructor() { 
     this.el = document.querySelector('.text')
-    this.fx = new TextScramble(this.el)
+    // this.fx = new TextScramble(this.el)
   }
 
   ngOnInit() {
-    // ——————————————————————————————————————————————————
-    // Example
-    // ——————————————————————————————————————————————————
-    let self = this;
 
-    // self.text_run('jundong');
+    // let self = this;
 
-    this.controller = new ScrollMagic.Controller();
+    // this.controller = new ScrollMagic.Controller();
 
-    new ScrollMagic.Scene({ offset: 200 })
-    .on('progress', function () {
-      // self.text_run('start');
-      setTimeout(self.text_run('start'),1000);
-      console.log('start'); 
-    })
-    .addTo(this.controller);
+    // new ScrollMagic.Scene({ offset: 200 })
+    // .on('progress', function () {
+    //   // self.text_run('start');
+    //   setTimeout(self.text_run('start'),1000);
+    //   console.log('start'); 
+    // })
+    // .addTo(this.controller);
 
-    new ScrollMagic.Scene({ triggerElement: "#test", triggerHook:"onEnter"})
-    .on('progress', function () {
-      setTimeout(self.text_run('progress'),1000);
-      console.log('progress'); 
-    })
-    .addTo(this.controller);
+    // new ScrollMagic.Scene({ triggerElement: "#test", triggerHook:"onEnter"})
+    // .on('progress', function () {
+    //   setTimeout(self.text_run('progress'),1000);
+    //   console.log('progress'); 
+    // })
+    // .addTo(this.controller);
 
-    new ScrollMagic.Scene({ triggerElement: "#test", triggerHook:"onLeave" })
-    .on('progress', function () {
-      setTimeout(self.text_run('done'),1000);
-      // self.text_run('done');
-      console.log('done'); 
-    })
-    .addTo(this.controller);
+    // new ScrollMagic.Scene({ triggerElement: "#test", triggerHook:"onLeave" })
+    // .on('progress', function () {
+    //   setTimeout(self.text_run('done'),1000);
+    //   // self.text_run('done');
+    //   console.log('done'); 
+    // })
+    // .addTo(this.controller);
 
   }
 
-  text_run(arg:string) {
-    this.el = document.querySelector('.text')
-    this.fx = new TextScramble(this.el)
-    this.fx.setText(arg)
-  }
+  // text_run(arg:string) {
+  //   this.el = document.querySelector('.text')
+  //   this.fx = new TextScramble(this.el)
+  //   this.fx.setText(arg)
+  // }
 
 
 }
