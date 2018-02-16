@@ -147,22 +147,23 @@ export class WorksComponent implements OnInit {
     } ],
     "name" : "Musical Train : IKEA-hacked musical toy",
     "year" : 2016
-  }, {
-    "date" : 160501,
-    "id" : 8,
-    "list" : [ {
-      "projectId" : 8,
-      "smallimg" : "./../../assets/Works/2016_StartupKaistLogo/img/pic01-small.jpg"
-    }, {
-      "projectId" : 8,
-      "smallimg" : "./../../assets/Works/2016_StartupKaistLogo/img/pic02-small.jpg"
-    }, {
-      "projectId" : 8,
-      "smallimg" : "./../../assets/Works/2016_StartupKaistLogo/img/pic03-small.jpg"
-    } ],
-    "name" : "Identity Design for STARTUP KAIST",
-    "year" : 2016
   }, 
+  // {
+  //   "date" : 160501,
+  //   "id" : 8,
+  //   "list" : [ {
+  //     "projectId" : 8,
+  //     "smallimg" : "./../../assets/Works/2016_StartupKaistLogo/img/pic01-small.jpg"
+  //   }, {
+  //     "projectId" : 8,
+  //     "smallimg" : "./../../assets/Works/2016_StartupKaistLogo/img/pic02-small.jpg"
+  //   }, {
+  //     "projectId" : 8,
+  //     "smallimg" : "./../../assets/Works/2016_StartupKaistLogo/img/pic03-small.jpg"
+  //   } ],
+  //   "name" : "Identity Design for STARTUP KAIST",
+  //   "year" : 2016
+  // }, 
   // {
   //   "date" : 20171201,
   //   "id" : 9,
