@@ -66,10 +66,6 @@ export const routerConfig: Routes = [
                component: MusicalComponent 
            }, 
            {
-               path: '8',
-               component: StartkaistComponent 
-           }, 
-           {
                path: '10',
                component: ChurrosComponent 
            }, 
