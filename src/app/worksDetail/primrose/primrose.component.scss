@@ -141,7 +141,16 @@
 
 
 @media (max-width: 1280px) {
+    .main {
+        justify-content: flex-start;
+        padding: 0 48px;
+            .main__container__word {
+                font-size: 16px;
+            }
+    }
+
     .single {
+
         width: unset;
     }
     .single__frontImg__img {
@@ -170,30 +179,12 @@
             }
         }
     }
-
-
-
-.main {
-    justify-content: flex-start;
-    padding: 0 48px;
-        // .main__container {
-        //     max-width: 710px;
-        // }
-    }
-
 }
 
 @media (max-width: 850px) {
     .single__frontImg__title {
         pre {
             font-size: 45px;
-        }
-    }
-    .main {
-        .main__container {
-            .main__container__word {
-                font-size: 16px;
-            }
         }
     }
 }
