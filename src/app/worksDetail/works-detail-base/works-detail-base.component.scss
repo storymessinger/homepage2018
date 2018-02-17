@@ -32,11 +32,6 @@
     // transition: all 5s ease;
 }
 
-#back {
-    opacity:0;
-    animation: fadeIn 1.1s ease 0.4s forwards ;
-}
-
 .workDetail {
     width: 100%;
     display: flex;
@@ -46,6 +41,12 @@
     // margin: auto;
     // transition: opacity 2s ease;
 }
+
+#back {
+    opacity:0;
+    animation: fadeIn 1.1s ease 0.4s forwards ;
+}
+
 
 footer {
     animation:fadeIn 4s ease forwards;
