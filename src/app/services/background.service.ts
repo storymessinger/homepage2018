@@ -7,23 +7,29 @@ export class BackgroundService {
 
   constructor() { }
 
-  backgroundCanvas(parent,col,wid) {
+  backgroundCanvas(parent, backgroundColor, Xwidth, color1, color2) {
     let self = this;
 
     var sketch = function ( p ) {
+
+      let eyesInstance;
+
       p.windowResized = function() {
-        p.resizeCanvas(p.windowWidth * wid, p.windowHeight);
+        p.resizeCanvas(p.windowWidth * Xwidth, p.windowHeight);
       } 
       p.setup = function() {
-        let myCanvas = p.createCanvas(p.windowWidth * wid, p.windowHeight);
+        let myCanvas = p.createCanvas(p.windowWidth * Xwidth, p.windowHeight);
         myCanvas.parent(parent);
-        // myCanvas.parent('back');
         myCanvas.elt.style.position = "fixed"; 
-        // myCanvas.style('z-index', '-2');
-        // position the canvas to fixed     };
-        // boxes = new Boxes(p.windowWidth, p.windowHeight, time);
+
+        eyesInstance = new EyeGroup(40, color1, color2);
       }
 
+      p.draw = function() {
+        p.background(backgroundColor);
+        // eyesInstance.eyeArr.forEach( eye => eye.render());
+        eyesInstance.draw();
+      }
 
       class Eye {
         private shape_choice : string[] = ['gray', 'white'] 
@@ -48,9 +54,14 @@ export class BackgroundService {
 
         first : boolean = true;
 
-        constructor(windowWidth:number, windowHeight:number) {
+        boxColor1 : string;
+        boxColor2 : string;
+        
+        constructor(windowWidth:number, windowHeight:number, col1, col2) {
           this.cX = windowWidth;
           this.cY = windowHeight;
+          this.boxColor1 = col1;
+          this.boxColor2 = col2;
           this.setup();
         }
 
@@ -84,11 +95,11 @@ export class BackgroundService {
 
           switch(this.shape){
             case 'gray' :
-            this.rSquare(this.x,this.y, this.sizeVal, this.angle, '#BABABA');
+            this.rSquare(this.x,this.y, this.sizeVal, this.angle, this.boxColor1);
             break;
             
             case 'white' :
-            this.rSquare(this.x,this.y, this.sizeVal, this.angle, '#FFFFFF');
+            this.rSquare(this.x,this.y, this.sizeVal, this.angle, this.boxColor2);
             break;
           }
 
@@ -137,31 +148,6 @@ export class BackgroundService {
 
         }
 
-        // rCircleShadow(x,y,size,angle) {
-        //   p.fill(0,0,0,75);
-        //   p.noStroke();
-        //   p.ellipse(x+3,y+3,size,size);
-
-        // }
-
-        // rTriangle(x,y,size,angle) {
-        //   p.stroke(50,50,50,80);
-        //   // p.noStroke();
-
-        //   let alpha = angle;
-        //   let beta = 60 - angle;
-        //   let theta = 120 - angle;
-          
-        //   p.triangle(
-        //     x-0.75*size*Math.cos(theta/180*Math.PI),
-        //     y+0.75*size*Math.sin(theta/180*Math.PI),
-        //     x-0.75*size*Math.cos(alpha/180*Math.PI),
-        //     y-0.75*size*Math.sin(alpha/180*Math.PI),
-        //     x+0.75*size*Math.cos(beta/180*Math.PI),
-        //     y-0.75*size*Math.sin(beta/180*Math.PI)
-        //   )
-        // }
-
         getRandom(min, max) {
           return (Math.random() * (max - min)) + min;
         }
@@ -170,33 +156,30 @@ export class BackgroundService {
 
       class EyeGroup {
 
-        private eyeNum : number;
         eyeArr : any[] = [];
+        col1 : string;
+        col2 : string;
         
-        constructor(eyeNum : number) {
-          this.eyeNum = eyeNum;
-          this.start();
+        constructor(eyeNum : number, color1, color2) {
+          this.col1 = color1;
+          this.col2 = color2;
+          this.start(eyeNum);
         }
 
-        start() {
-          for (let i = 0; i < this.eyeNum; i++ ) {
-            this.eyeArr[i] = new Eye(p.windowWidth, p.windowHeight);
+        start(num) {
+          
+          for (let i = 0; i < num; i++ ) {
+            this.eyeArr[i] = new Eye(p.windowWidth, p.windowHeight, this.col1, this.col2 );
           }
         }
 
-        // draw() {
-        //   this.eyeArr.forEach( item => item.render());
-        // }
+        draw() {
+          this.eyeArr.forEach( item => item.render());
+        }
 
       }
       
-      let testEyes = new EyeGroup(40);
       
-      p.draw = function() {
-        // p.background(255,255,255);
-        p.background(col);
-        testEyes.eyeArr.forEach( item => item.render());
-      }
     }
       
     let myp5 = new p5(sketch);
