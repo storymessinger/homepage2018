@@ -22,7 +22,7 @@ export class BackgroundService {
         myCanvas.parent(parent);
         myCanvas.elt.style.position = "fixed"; 
 
-        eyesInstance = new EyeGroup(40, color1, color2);
+        eyesInstance = new BoxGroup(40, color1, color2);
       }
 
       p.draw = function() {
@@ -31,7 +31,7 @@ export class BackgroundService {
         eyesInstance.draw();
       }
 
-      class Eye {
+      class Box {
         private shape_choice : string[] = ['gray', 'white'] 
         shape: string;
         sizeVal : number; // 40 < n < 100
@@ -154,7 +154,7 @@ export class BackgroundService {
 
       }
 
-      class EyeGroup {
+      class BoxGroup {
 
         eyeArr : any[] = [];
         col1 : string;
@@ -169,7 +169,7 @@ export class BackgroundService {
         start(num) {
           
           for (let i = 0; i < num; i++ ) {
-            this.eyeArr[i] = new Eye(p.windowWidth, p.windowHeight, this.col1, this.col2 );
+            this.eyeArr[i] = new Box(p.windowWidth, p.windowHeight, this.col1, this.col2 );
           }
         }
 

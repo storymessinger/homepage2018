@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-declare var p5, TimelineMax, TweenMax, Power4, ScrollMagic;
+declare var p5, TimelineMax, TweenMax;
 
 @Component({
   selector: 'app-about',
@@ -9,144 +9,91 @@ declare var p5, TimelineMax, TweenMax, Power4, ScrollMagic;
 })
 export class AboutComponent implements OnInit {
 
-  el;
-  fx;
-  controller;
-
   constructor() {
-    // this.el = document.querySelector('.text')
-    // this.fx = new TextScramble(this.el)
+
   }
 
   ngOnInit() {
+    this.MovingBox('main-boxes-1');
+    this.MovingBox('main-boxes-2');
+  }
 
-//     let self = this;
 
-//     this.controller = new ScrollMagic.Controller();
+  MovingBox(elementID) {
 
-//     new ScrollMagic.Scene({
-//         offset: 200
-//       })
-//       .on('progress', function () {
-//         // self.text_run('start');
-//         setTimeout(self.text_run(`
-//       Educational Background
-// KAIST : Industrial Design & Mechanical Engineering / 2016
-// KAIST : Industrial Design, Master Degree / 2018
+    let self = this;
 
-// International Conference Papers
-// CHI 2017, Consumer to Createor: How Households Buy Furniture to Inform Design and Fabrication interfaces (3rd author) / 2017
+    var sketch = function ( p ) {
+      let myCanvas;
+      let box;
 
-// Awards and Honors
-// SKT ICT Vision Contest, 4th / 2014
-// Korea Science Technology Innovation Contest, Grand Prize / 2014
-// Spark Concept International Award, Finalist / 2015
-//       `), 1000);
-//       })
-//       .addTo(this.controller);
+      p.setup = function(){
+        myCanvas = p.createCanvas(30,70);
+        myCanvas.parent(elementID);
+        box = new Box(8);
+      }
 
-//     new ScrollMagic.Scene({
-//         triggerElement: "#test",
-//         triggerHook: "onEnter"
-//       })
-//       .on('progress', function () {
-//         setTimeout(self.text_run('progress'), 1000);
-//         console.log('progress');
-//       })
-//       .addTo(this.controller);
+      p.draw = function () {
+        p.background('#333333');
+        box.render();
+      }
 
-//     new ScrollMagic.Scene({
-//         triggerElement: "#test",
-//         triggerHook: "onLeave"
-//       })
-//       .on('progress', function () {
-//         setTimeout(self.text_run('done'), 1000);
-//         // self.text_run('done');
-//         console.log('done');
-//       })
-//       .addTo(this.controller);
+
+      class Box {
+        
+        size;
+        options;
+        from;
+        to;
+
+        constructor(Size) {
+          this.size= Size;
+          p.colorMode(p.HSB, 100);
+          this.from = p.color(88, 54, 100);
+          this.to = p.color(52, 72, 100);
+          this.options = { angle: 0, C:0, Y:8 };
+          
+          TweenMax.to(this.options, 6, { C:1, angle: 315, Y:62, repeat: -1, repeatDelay: 10 } )
+        }
+
+        render() {
+          this.rSquare( 8, this.options.Y, this.options.angle, this.options.C );
+        }
+      
+        rSquare(x,y,angle,color) {
+          p.noStroke();
+          p.fill(p.lerpColor(this.from, this.to, color))
+          // p.fill(this.options.H, this.options.S, this.options.B);
+
+          // if(p.mouseX > x-50 && p.mouseX < x+50 && p.mouseY > y - 50 && p.mouseY < y + 50) {
+          // if(p.mouseX > x-30 && p.mouseX < x+30) {
+          //   p.fill(this.highlight);
+          // } else {
+          //   p.fill(color);
+          // }
+
+          let A = 0.8*this.size*Math.cos(angle*Math.PI/180);
+          let B = 0.8*this.size*Math.sin(angle*Math.PI/180);
+
+          let x1 = x - A;
+          let y1 = y - B;
+          let x2 = x + B;
+          let y2 = y - A;
+          let x3 = x + A;
+          let y3 = y + B;
+          let x4 = x - B;
+          let y4 = y + A;
+
+          p.quad(x1,y1,x2,y2,x3,y3,x4,y4);
+
+        }
+      }
+
+    }
+
+    let myp5 = new p5(sketch);
 
   }
 
-  // text_run(arg: string) {
-  //   this.el = document.querySelector('.text')
-  //   this.fx = new TextScramble(this.el)
-  //   this.fx.setText(arg)
-  // }
-
 
 }
-
-// class TextScramble {
-
-//   el;
-//   chars;
-//   frame;
-//   queue;
-//   resolve;
-//   frameRequest;
-
-//   constructor(el) {
-//     this.el = el;
-//     this.chars = '!<>-_\\/[]{}—=+*^?#________'
-//     this.update = this.update.bind(this)
-//   }
-
-//   setText(newText) {
-//     const oldText = this.el.innerText
-//     const length = Math.max(oldText.length, newText.length)
-//     const promise = new Promise((resolve) => this.resolve = resolve)
-//     this.queue = []
-//     for (let i = 0; i < length; i++) {
-//       const from = oldText[i] || ''
-//       const to = newText[i] || ''
-//       const start = Math.floor(Math.random() * 40)
-//       const end = start + Math.floor(Math.random() * 40)
-//       this.queue.push({
-//         from,
-//         to,
-//         start,
-//         end
-//       })
-//     }
-//     cancelAnimationFrame(this.frameRequest)
-//     this.frame = 0
-//     this.update()
-//     return promise
-//   }
-//   update() {
-//     let output = ''
-//     let complete = 0
-//     for (let i = 0, n = this.queue.length; i < n; i++) {
-//       let {
-//         from,
-//         to,
-//         start,
-//         end,
-//         char
-//       } = this.queue[i]
-//       if (this.frame >= end) {
-//         complete++
-//         output += to
-//       } else if (this.frame >= start) {
-//         if (!char || Math.random() < 0.15) {
-//           char = this.randomChar()
-//           this.queue[i].char = char
-//         }
-//         output += `<span class="dud">${char}</span>`
-//       } else {
-//         output += from
-//       }
-//     }
-//     this.el.innerHTML = output
-//     if (complete === this.queue.length) {
-//       this.resolve()
-//     } else {
-//       this.frameRequest = requestAnimationFrame(this.update)
-//       this.frame++
-//     }
-//   }
-//   randomChar() {
-//     return this.chars[Math.floor(Math.random() * this.chars.length)]
-//   }
-// }

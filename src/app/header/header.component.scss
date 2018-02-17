@@ -26,12 +26,12 @@ ul {
 h3, ul, a {
     margin: 0;
     font-size: 18px;
-    color: $darkgary;
+    color: $darkgray;
     text-decoration: none;
 }
-.name {
+.text {
     font-size: 18px;
-    color: $black;
+    color: $darkgray;
 }
 
 @media (min-width: 768px) {
