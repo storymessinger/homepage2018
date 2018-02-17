@@ -2,7 +2,7 @@
 <div class="main container" >
   
   <ng-container *ngFor="let project of projects ">
-    <div [id]=project.id (mouseenter)="opacityToZero($event)" (mouseleave)="opacityToOne()" class="project">
+    <div [@photosAnimation]="project.list.length" [id]=project.id (mouseenter)="opacityToZero($event)" (mouseleave)="opacityToOne()" class="project">
 
       <div *ngFor="let item of project.list; let i = index" class="project__img" [ngStyle]="{'background-color': white}">
         <div class="project__img__container" [routerLink]='["/detail", item.projectId]'>

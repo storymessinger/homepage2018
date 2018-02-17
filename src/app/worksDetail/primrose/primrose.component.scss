@@ -99,7 +99,7 @@
     // height: 1000px;
 
     .main__container {
-        border-top: solid 2px $black;
+        border-top: solid 1px #FF76DA;
         padding-top: 36px;
         max-width: 710px;
     }
@@ -151,6 +151,9 @@
     }
     .single__frontImg__title {
         left: 50px;
+        pre {
+            font-size: 55px;
+        }
     }
 
     .single__frontText {
@@ -183,7 +186,7 @@
 @media (max-width: 850px) {
     .single__frontImg__title {
         pre {
-            font-size: 55px;
+            font-size: 45px;
         }
     }
     .main {

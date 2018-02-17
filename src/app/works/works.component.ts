@@ -5,18 +5,41 @@ import {
   Component,
   OnInit
 } from '@angular/core';
+
+import {
+  trigger,
+  state,
+  style,
+  animate,
+  transition,
+  query,
+  stagger
+} from '@angular/animations';
+
+
 import {
   Observable
 } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 declare var TweenLite, Power2: any;
-declare var p5, TimelineMax, TweenMax, Power4;
+declare var p5, TimelineMax, TweenMax, Power4; 
 
 
 @Component({
   selector: 'app-works',
   templateUrl: './works.component.html',
-  styleUrls: ['./works.component.scss']
+  styleUrls: ['./works.component.scss'],
+  animations: [
+    trigger('photosAnimation', [
+      transition('* => *', [
+        query('.project__img',style({ transform: 'translateX(30%)', opacity: 0})),
+        query('.project__img',
+          stagger('100ms', [
+            animate('550ms ease-out', style({ transform: 'translateX(0)', opacity: 1}))
+        ]))
+      ])
+    ])
+  ]
 })
 export class WorksComponent implements OnInit {
 
@@ -261,150 +284,163 @@ export class WorksComponent implements OnInit {
     var sketch = function (p) {
 
       let eye;
-      let widthOfEye = 70
-      let blinkTheEye = false;
+      let canvasWidth = 70;
+      let canvasHeight; 
+      let trigger = false;
+      let myCanvas;
 
       p.setup = function () {
-        let myCanvas = p.createCanvas(widthOfEye, widthOfEye + 3 / 8 * widthOfEye);
+        canvasHeight = canvasWidth * 1.5;
+        myCanvas = p.createCanvas(canvasWidth, canvasHeight);
         myCanvas.parent('eyeContainer');
-        eye = new Eye(widthOfEye);
+        eye = new Eye(canvasWidth, canvasHeight);
         randomBlink();
       };
 
       p.mouseClicked = function () {
         if (p.mouseX > 0 && p.mouseX < p.width && p.mouseY > 0 && p.mouseY < p.height) {
-          blinkTheEye = true;
+          trigger = true;
         }
       }
 
       p.draw = function () {
         p.background(0, 0, 0, 0);
-        eye.update(blinkTheEye);
-        eye.render();
-        blinkTheEye = false;
+        eye.render(p.winMouseX, p.winMouseY, p.mouseX, p.mouseY, trigger);
+        trigger = false;
+
+        // eye.update(trigger);
+
+        // test
+        // console.log( 'winMouse: ' + p.winMouseX + ', ' + p.winMouseY)
+        // console.log( 'Mouse: ' + p.mouseX + ', ' + p.mouseY)
       };
 
 
       class Eye {
 
-        eyeWidth: number;
+        CW: number;
+        CH:number;
+        pupilWidth: number;
         highlight;
-        setEyebrows;
-        blinking;
+        setEyelid;
         eye_lid = {
-          y: 0,
-          eyebrow: 0
+          y: 0
         };
+        hsb;
 
-        constructor(EyeWidth: number) {
-          this.eyeWidth = EyeWidth;
-          this.highlight = '#F4FF69';
-          this.blinking = false;
+        constructor(canvasWidth: number, canvasHeight:number) {
+          this.CW = canvasWidth;
+          this.CH = canvasHeight;
+          this.pupilWidth = this.CW * 0.5;
+          this.highlight = p.random(['#FF76DA', '#48F1FF', '#FFFE01']);
 
-          this.setEyebrows = new TimelineMax({
+
+          p.colorMode(p.HSB,100)
+          this.hsb = { H: 0, S: 90, B:90 }
+          TweenMax.to(this.hsb, 1, { H: 80, repeat: -1 } );
+
+
+          this.setEyelid = new TimelineMax({
               paused: true
             })
             .to(this.eye_lid, 0.4, {
-              y: this.eyeWidth,
-              eyebrow: 0,
+              y: this.CW,
               ease: Power4.easeOut
             })
             .to(this.eye_lid, 0.6, {
               y: 0,
-              eyebrow: 0,
               ease: Power4.easeOut
             });
-          // this.setEyebrows.repeat(-1).yoyo(true).repeatDelay(8).play();
-          this.setEyebrows.play();
-
-        }
-
-        update(trigger) {
-          if (trigger && !this.blinking) {
-            this.setEyebrows.restart();
-          }
-        }
-
-        eye_interaction() {
-
-          // Make eye shine with hightlight colors
-          if (p.mouseX > 0 && p.mouseX < p.width && p.mouseY > 0 && p.mouseY < p.height) {
-            if (p.frameCount % 10 == 0) {
-              this.highlight = p.random(['#FF76DA', '#48F1FF', '#F4FF69']);
-              p.fill(this.highlight);
-            } else {
-              p.fill(this.highlight);
-            }
-          } else {
-            p.fill(120, 120, 120);
-          }
-
-          // Make eye move depending on the position of the mouse in the window
-          let eye = this.eyeWidth;
-
-          let MX = p.winMouseX;
-          let MY = p.winMouseY;
-          if (MX < p.windowWidth * 0.3) {
-            MX = p.windowWidth * 0.3
-          };
-          if (MX > p.windowWidth * 0.7) {
-            MX = p.windowWidth * 0.7
-          };
-          if (MY < p.windowHeight * 0.15) {
-            MY = p.windowHeight * 0.15
-          };
-          if (MY > p.windowHeight * 0.26) {
-            MY = p.windowHeight * 0.26
-          };
-
-
-          let x = MX * (p.width / p.windowWidth);
-          let y = MY * (p.height / p.windowHeight) + eye / 8;
-          p.rect(x - eye / 4, y - eye / 4 + 40, eye / 2, eye / 2);
+          this.setEyelid.play();
         }
 
 
-        render() {
-          let w = this.eyeWidth;
+        render(wmx, wmy, mx, my, doBlink) {
+          let ew = this.CW;
 
-          p.stroke(120, 120, 120);
+          this.eyebrow_render(ew);
+          this.eyeWhite_render(ew);
+
+          this.pupil_color(mx,my);
+          this.pupil_render(wmx,wmy);
+
+          this.eyelid_startBlink(doBlink);
+          this.eyelid_render(ew);
+        }
+
+        eyebrow_render(ew) {
+          p.stroke('rgba(120, 120, 120, 1)');
           p.strokeWeight(4);
+          let ew80 = ew/80;
+          p.line(ew80 * 17, ew80 * 26, ew80 * 20, ew80 * 38);
+          p.line(ew80 * 40, ew80 * 23, ew80 * 40, ew80 * 38);
+          p.line(ew80 * 63, ew80 * 26, ew80 * 60, ew80 * 38);
+        }
 
-          p.line(w / 80 * 17, w / 80 * 18, w / 80 * 20, w / 80 * 30);
-          p.line(w / 80 * 40, w / 80 * 15, w / 80 * 40, w / 80 * 30);
-          p.line(w / 80 * 63, w / 80 * 18, w / 80 * 60, w / 80 * 30);
-          // if( this.eye_lid.y < 20 ) {
-          //   p.stroke(120,120,120);
-          //   p.strokeWeight(4);
-          //   p.line(15,15,20,30);
-          //   p.line(40,12,40,40);
-          //   p.line(65,15,60,30);
-          // }
-          // if( this.eye_lid.y > 60 ) {
-          //   p.stroke(120,120,120);
-          //   p.strokeWeight(4);
-          //   p.line(15,115,20,110);
-          //   p.line(40,120,40,110);
-          //   p.line(65,115,60,110);
-          // }
-
+        eyeWhite_render(ew){
           p.noStroke();
-          p.fill(250, 250, 250);
-          p.rect(0, 0 + (3 / 8 * w), w, w);
+          p.fill('rgba(250,250,250,1)');
+          p.rect(0, (this.CH - this.CW), ew, ew);
+        }
 
-          this.eye_interaction();
+        // Make eye shine with hightlight colors
+        pupil_color(mx,my) {
+          if (p.mouseX > 0 && p.mouseX < this.CW && p.mouseY > this.CH-this.CW && p.mouseY < this.CH) {
+            p.fill(this.hsb.H, this.hsb.S, this.hsb.B);
+            // if (p.frameCount % 10 == 0) {
+            //   this.highlight = p.random(['#FF76DA', '#48F1FF', '#F4FF69']);
+            //   p.fill(this.hsb.H, 20, 60);
+            // } else {
+            //   p.fill(this.highlight);
+            // }
+          } else {
+            p.fill('rgba(120,120,120,1)');
+          }
+        }
 
+        // Make eye move depending on the position of the mouse in the window
+        pupil_render(wmx,wmy) {
+          let ew = this.CW;
+          let offset = this.CH - this.CW;
+          let pw = this.pupilWidth;
+
+          let windowW = p.windowWidth;
+          let windowH = p.windowHeight;
+
+          wmx < windowW * 0.3  ? wmx = windowW * 0.3  : void 0;
+          wmx > windowW * 0.7  ? wmx = windowW * 0.7  : void 0;
+          wmy < windowH * 0.3 ? wmy = windowH * 0.3 : void 0;
+          wmy > windowH * 0.48 ? wmy = windowH * 0.48 : void 0;
+
+          let x = wmx * (this.CW / windowW);
+          let y = wmy * (this.CH / windowH) + offset;
+
+          // CENTER mode
+          x -= pw /2;
+          y -= pw /2;
+
+
+          // draw 
+          p.rect(x , y, pw, pw);
+        }
+
+        eyelid_startBlink(trigger) {
+          if (trigger) { this.setEyelid.restart(); }
+        }
+
+        eyelid_render(ew) {
           p.noStroke();
           p.fill('#FFB989');
-          p.rect(0, 0 + (3 / 8 * w), w, this.eye_lid.y);
-
+          p.rect(0, this.CH-this.CW, ew, this.eye_lid.y);
         }
+
+
 
       }
 
       const randomBlink = function () {
         if (Math.random() < 0.5) {
-          blinkTheEye = true;
+          trigger = true;
         }
         setTimeout(randomBlink, 5000);
       }

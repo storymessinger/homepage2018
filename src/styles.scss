@@ -49,6 +49,15 @@ body {
     width:100%;
 }
 
+
+// Highlight text selection
+::selection {
+    background: #FF76DA; /* WebKit/Blink Browsers */
+  }
+  ::-moz-selection {
+    background: #FF76DA; /* Gecko Browsers */
+}
+
 // to solve ios horizontal scroll issue
 body {
         overflow: hidden;
@@ -56,14 +65,15 @@ body {
         -webkit-overflow-scrolling: touch;
 }
 
+// Style for a
+a:link { text-decoration: underline; }
 
-// underline
+a:visited { color: #333333; }
+
+// specified link_underline
 $underlineColor: #333333;
 $underlineHeight: 1%;
 
-a:visited {
-    color: #333333;
-}
 
 .link_underline {
   position: relative;
@@ -92,8 +102,6 @@ a:visited {
     }
   }
 }
-
-
 
 
 // font sizes

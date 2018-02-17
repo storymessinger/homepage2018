@@ -114,7 +114,8 @@ export class BackgroundService {
         rSquare(x,y,size,angle,color) {
           p.noStroke();
 
-          if(p.mouseX > x-30 && p.mouseX < x+30 ) {
+          // if(p.mouseX > x-50 && p.mouseX < x+50 && p.mouseY > y - 50 && p.mouseY < y + 50) {
+          if(p.mouseX > x-30 && p.mouseX < x+30) {
             p.fill(this.highlight);
           } else {
             p.fill(color);
