@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, HostListener } from '@angular/core';
-declare var p5, TimelineMax, TweenMax, ScrollMagic;
+declare var p5, TimelineMax, TweenMax, ScrollMagic, Linear;
 
 @Component({
   selector: 'app-header',
@@ -14,7 +14,9 @@ export class HeaderComponent implements OnInit {
   constructor(
     // private eyeBlinkService:EyeBlinkService
   ) { 
+
   }
+
 
 
   ngOnInit() {
@@ -37,6 +39,31 @@ export class HeaderComponent implements OnInit {
     
     next()
 
+    ///////
+
+    var controller = new ScrollMagic.Controller();
+    let __scrollPos = 0;
+
+    var i1 = 0; 
+    var i2 = 0; 
+    var scene = new ScrollMagic.Scene()
+    .addTo(controller)
+    .on('update',function(event){
+      var x1 = controller.info("scrollDirection");
+      let x2 = event.scrollPos;
+      let x3 = 150;
+          if ( x1 == "REVERSE" && x2 >= x3 && i1 == 0) {
+              TweenMax.fromTo("#header", 0.3, {top: "-90px"}, {color:"red", top: "0px", ease: Linear.easeNone});
+              i1++;
+              i2 = 0;
+          }
+          if ( x1 == "FORWARD" && x2 > x3 && i2 == 0) {
+              TweenMax.fromTo("#header", 0.3, {top: "0px", color: "blue"}, {top: "-90px", ease: Linear.easeNone});
+              i1 = 0;
+              i2++;
+          }       
+    })
+    
     // let self = this;
 
     // this.controller = new ScrollMagic.Controller();
@@ -83,6 +110,7 @@ export class HeaderComponent implements OnInit {
     // this.eyeBlinkService.blink = true;
   }
 }
+
 
 
 class TextScramble {
