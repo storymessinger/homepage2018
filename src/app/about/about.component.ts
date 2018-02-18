@@ -12,10 +12,17 @@ export class AboutComponent implements OnInit {
   constructor() {
 
   }
+  
+  model = new Msg('jundong@gmail.com', 'yours@email.com', 'hello','write here');
+  submitted = false;
+  onSubmit() { this.submitted = true };
+
+  get diagnostic() { return JSON.stringify(this.model)};
 
   ngOnInit() {
     this.MovingBox('main-boxes-1');
     this.MovingBox('main-boxes-2');
+    this.MovingBox('main-boxes-3');
   }
 
 
@@ -95,5 +102,16 @@ export class AboutComponent implements OnInit {
 
   }
 
+
+}
+
+export class Msg {
+
+  constructor(
+    public to : string,
+    public from : string,
+    public subject: string,
+    public message : string
+  ) {  }
 
 }

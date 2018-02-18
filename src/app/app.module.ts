@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { routerConfig } from './app.routing';
 import { RouterModule } from '@angular/router';
+import { FormsModule }   from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
@@ -48,7 +49,8 @@ import { DoradoraComponent } from './worksDetail/doradora/doradora.component';
   imports: [
     BrowserModule,
     RouterModule.forRoot(routerConfig),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    FormsModule
   ],
   providers: [
     BackgroundService
