@@ -21,10 +21,10 @@ export const routerConfig: Routes = [
         redirectTo: 'works',
         pathMatch: 'full'
     },
-    // { 
-    //     path: '', 
-    //     component: IntroComponent
-    // },
+    { 
+        path: 'intro', 
+        component: IntroComponent
+    },
     {
         path: 'works',
         component: WorksComponent
