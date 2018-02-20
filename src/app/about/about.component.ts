@@ -22,7 +22,7 @@ export class AboutComponent implements OnInit {
   ngOnInit() {
     this.MovingBox('main-boxes-1');
     this.MovingBox('main-boxes-2');
-    this.MovingBox('main-boxes-3');
+    // this.MovingBox('main-boxes-3');
   }
 
 
@@ -106,7 +106,6 @@ export class AboutComponent implements OnInit {
 }
 
 export class Msg {
-
   constructor(
     public to : string,
     public from : string,
