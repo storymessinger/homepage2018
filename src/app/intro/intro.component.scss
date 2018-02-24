@@ -1,0 +1,148 @@
+@import './../../color';
+
+
+.cover-back {
+    position: absolute;
+    min-height: 100vh;
+    width:100%;
+    background-color: $blackTrans;
+    margin:auto;
+
+    display:flex;
+    justify-content: center;
+}
+
+.cover__intro {
+    margin-top: 120px;
+    padding: 0 20px;
+    width:100%;
+    max-width: 1000px;
+}
+
+.logo {
+    width: 140px;
+    img { 
+        width: 100%;
+    }
+}
+
+.cover__intro__container {
+    border-bottom: solid 1px $darkgray;
+    padding: 30px 0 50px 0;
+}
+
+.none {
+    display: none;
+}
+
+.service {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+
+    .service__box {
+        display:flex;
+        flex-flow: column;
+        align-items: center;
+        min-width: 300px;
+        border: solid 1px $white;
+        height: 400px;
+    }
+
+    .service__box__img {
+        border: solid 1px $white;
+        width:80%;
+        img {
+            width:100%;
+        }
+    }
+}
+
+h1, h3, p, a, ul, li {
+    color: $white;
+    margin: 0;
+}
+h1, h3 {
+    font-family: 'relative-bold';
+}
+h1 {
+    font-size: 50px;
+    margin-bottom: 50px;
+}
+
+p {
+    margin-bottom: 35px;
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+a {
+    text-decoration: none;
+    text-decoration: none;
+    border-bottom: 1px solid white;
+    font-size: 18px;
+}
+
+a:hover {
+    color: $pinkHL;
+}
+
+
+ul {
+    padding: 0;
+    list-style: none;
+}
+
+.works__box {
+    margin-bottom: 8px;
+}
+
+.works__title {
+    font-family: 'relative-bold';
+    font-size: 28px;
+}
+
+.intro__link {
+    a {
+        color: $darkgray;
+        border-bottom: 1px solid $darkgray;
+    }
+    a:hover {
+        color: $blueHL;
+    }
+    padding-top: 25px;
+}
+
+footer {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    // background-color: $gray;
+    padding: 10px 0;
+    margin: 50px 10% 0 10%; 
+    z-index: 9999;
+    p {
+        font-size: 13px;
+        font-family: 'relative-mono10pitch';
+    }
+}
+
+
+@media (max-width: 550px) {
+    .logo {
+        width: 60px;
+    }
+    h1 {
+        font-size: 25px;
+    }
+
+    a, p {
+        font-size: 16px;
+
+    }
+
+    .works__title {
+        font-size: 20px;
+    }
+
+}

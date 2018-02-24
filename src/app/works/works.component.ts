@@ -379,7 +379,12 @@ export class WorksComponent implements OnInit {
 
         eyeWhite_render(ew){
           p.noStroke();
-          p.fill('rgba(250,250,250,1)');
+          if (p.mouseX > 0 && p.mouseX < this.CW && p.mouseY > this.CH-this.CW && p.mouseY < this.CH) {
+            // p.fill('rgba(0,0,0,1)');
+            p.fill(this.hsb.H - 10 , this.hsb.S - 10, this.hsb.B - 25);
+          } else {
+            p.fill('rgba(250,250,250,1)');
+          }
           p.rect(0, (this.CH - this.CW), ew, ew);
         }
 

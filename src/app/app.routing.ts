@@ -18,7 +18,7 @@ import { SoundcloudComponent } from './worksDetail/soundcloud/soundcloud.compone
 export const routerConfig: Routes = [
     { 
         path: '', 
-        redirectTo: 'works',
+        redirectTo: 'intro',
         pathMatch: 'full'
     },
     { 

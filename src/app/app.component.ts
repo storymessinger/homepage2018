@@ -21,7 +21,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.backgroundService.backgroundCanvas('background','#EFEFEF',1, '#BABABA', '#FFFFFF');
+    this.backgroundService.backgroundCanvas('background','#EFEFEF',1, '#BABABA', '#FFFFFF', 40);
     // this.bColor$ = this.bColorService.color$
     //   .do( color => console.log(color));
   }

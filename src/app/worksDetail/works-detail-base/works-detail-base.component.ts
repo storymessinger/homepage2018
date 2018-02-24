@@ -11,7 +11,7 @@ export class WorksDetailBaseComponent implements OnInit {
   constructor(private backgroundService:BackgroundService) { }
 
   ngOnInit() {
-    this.backgroundService.backgroundCanvas('back','#fff', 0.787, '#EEEEEE', '#FFFFFF');
+    this.backgroundService.backgroundCanvas('back','#fff', 0.787, '#EEEEEE', '#FFFFFF', 40);
   }
 
 }

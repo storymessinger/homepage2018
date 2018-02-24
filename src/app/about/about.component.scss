@@ -19,8 +19,8 @@
 }
 
 .contentSingle {
-  background-color: $white;
-  margin: 0px 10% 0 10%;
+  background-color: $blackTrans;
+//   margin: 0px 10% 0 10%;
   ::-webkit-scrollbar {
     width: 25px;
   }
@@ -36,7 +36,7 @@
 }
 
 .main {
-    padding: 100px 0 100px 0;
+    padding: 120px 0 100px 0;
     width: 960px;
     color: $black;
     display : flex;
@@ -46,14 +46,19 @@
 .main-560 {
     padding-bottom: 200px;
     width: 580px;
-    background-color: $black;
     // height: 1000px;
 }
+
 
 .main-words{
     padding-top : 10px;
     padding-left: 40px;
     padding-right: 40px;
+    .colorbox {
+        width: 8px;
+        height: 8px;
+        margin-bottom: 8px;
+    }
     p {
         font-family: 'relative-mono10pitch';
         font-size: 16px;
@@ -62,7 +67,7 @@
     }
     span {
         // font-family: 'relative-bold';
-        color: $darkgray;
+        color: $blueHL;
     }
 }
 
@@ -132,7 +137,10 @@
     position: fixed;
     width: 30px;
     a {
-        color: $black;
+        color: white;
+    }
+    a :visited {
+        color: white;
     }
 }
 
@@ -166,21 +174,8 @@ footer {
     }
 
     .fixed {
-        top: 130px;
-        left: 5%
-    }
-}
-@media (max-width: 850px) {
-    .fixed {
         position: unset;
-        padding: 40px 40px;
-        a {
-            color: white;
-            background: none;
-        }
-        a :visited {
-            color: white;
-        }
+        padding: 0 40px 40px 40px;
     }
 }
 

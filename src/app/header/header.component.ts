@@ -1,4 +1,6 @@
 import { Component, OnInit, Input, HostListener } from '@angular/core';
+import { Router } from '@angular/router';
+import { Subscription } from 'rxjs/Rx';
 declare var p5, TimelineMax, TweenMax, ScrollMagic, Linear;
 
 @Component({
@@ -11,6 +13,9 @@ export class HeaderComponent implements OnInit {
   @Input() selectProject;
   click = false;;
 
+  subscription: Subscription;
+  color;
+
   constructor(
     // private eyeBlinkService:EyeBlinkService
   ) { 
@@ -18,8 +23,8 @@ export class HeaderComponent implements OnInit {
   }
 
 
-
   ngOnInit() {
+
     const phrases = [
       'JUNDONG',
       'DESIGNER',
@@ -28,7 +33,7 @@ export class HeaderComponent implements OnInit {
     
     const el = document.querySelector('.text')
     const fx = new TextScramble(el)
-    
+  
     let counter = 0
     const next = () => {
       fx.setText(phrases[counter]).then(() => {
@@ -63,42 +68,43 @@ export class HeaderComponent implements OnInit {
               i2++;
           }       
     })
-    
-    // let self = this;
-
-    // this.controller = new ScrollMagic.Controller();
-
-    // new ScrollMagic.Scene({
-    //     offset: 200
-    //   })
-    //   .on('progress', function () {
-    //     // self.text_run('start');
-    //     self.text_run(`start`), 1000;
-    //   })
-    //   .addTo(this.controller);
-
-    // new ScrollMagic.Scene({
-    //     triggerElement: "#test",
-    //     triggerHook: "onEnter"
-    //   })
-    //   .on('progress', function () {
-    //     self.text_run('progress'), 1000;
-    //     console.log('progress');
-    //   })
-    //   .addTo(this.controller);
-
-    // new ScrollMagic.Scene({
-    //     triggerElement: "#test",
-    //     triggerHook: "onLeave"
-    //   })
-    //   .on('progress', function () {
-    //     self.text_run('done'), 1000;
-    //     // self.text_run('done');
-    //     console.log('done');
-    //   })
-    //   .addTo(this.controller);
-
   }
+
+    
+  //   let self = this;
+
+  //   this.controller = new ScrollMagic.Controller();
+
+  //   new ScrollMagic.Scene({
+  //       offset: 200
+  //     })
+  //     .on('progress', function () {
+  //       // self.text_run('start');
+  //       self.text_run(`start`), 1000;
+  //     })
+  //     .addTo(this.controller);
+
+  //   new ScrollMagic.Scene({
+  //       triggerElement: "#test",
+  //       triggerHook: "onEnter"
+  //     })
+  //     .on('progress', function () {
+  //       self.text_run('progress'), 1000;
+  //       console.log('progress');
+  //     })
+  //     .addTo(this.controller);
+
+  //   new ScrollMagic.Scene({
+  //       triggerElement: "#test",
+  //       triggerHook: "onLeave"
+  //     })
+  //     .on('progress', function () {
+  //       self.text_run('done'), 1000;
+  //       // self.text_run('done');
+  //     })
+  //     .addTo(this.controller);
+
+  // }
 
   // text_run(arg: string) {
   //   this.el = document.querySelector('.text')

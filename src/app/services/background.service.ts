@@ -7,37 +7,38 @@ export class BackgroundService {
 
   constructor() { }
 
-  backgroundCanvas(parent, backgroundColor, Xwidth, color1, color2) {
-    let self = this;
+  backgroundCanvas(parent, backgroundColor, Xwidth, color1, color2, number) {
+    const self = this;
 
-    var sketch = function ( p ) {
+    const sketch = function ( p ) {
 
       let eyesInstance;
 
       p.windowResized = function() {
         p.resizeCanvas(p.windowWidth * Xwidth, p.windowHeight);
-      } 
-      p.setup = function() {
-        let myCanvas = p.createCanvas(p.windowWidth * Xwidth, p.windowHeight);
-        myCanvas.parent(parent);
-        myCanvas.elt.style.position = "fixed"; 
+      };
 
-        eyesInstance = new BoxGroup(40, color1, color2);
-      }
+      p.setup = function() {
+        const myCanvas = p.createCanvas(p.windowWidth * Xwidth, p.windowHeight);
+        myCanvas.parent(parent);
+        myCanvas.elt.style.position = 'fixed'; 
+
+        eyesInstance = new BoxGroup(number, color1, color2);
+      };
 
       p.draw = function() {
         p.background(backgroundColor);
         // eyesInstance.eyeArr.forEach( eye => eye.render());
         eyesInstance.draw();
-      }
+      };
 
       class Box {
-        private shape_choice : string[] = ['gray', 'white'] 
+        private shape_choice: string[] = ['gray', 'white'];
         shape: string;
-        sizeVal : number; // 40 < n < 100
-        x_0 : number;
-        x : number;
-        y : number;
+        sizeVal: number; // 40 < n < 100
+        x_0: number;
+        x: number;
+        y: number;
         angle : number;
         upVal : number;
         sideVal : number;
@@ -73,7 +74,7 @@ export class BackgroundService {
           this.sideVal = this.getRandom(0.5, 0.5); // going left or right speed
           this.sideAcc = this.getRandom(0.1, 0.25); // sideways frequency
           this.angleAcc = this.getRandom(0.3, 0.4);
-          this.highlight = p.random(['#FF76DA','#48F1FF'])
+          this.highlight = p.random(['#FF76DA','#48F1FF']);
           
           if ( this.first === true ) {
             this.x_0 = this.getRandom(this.sizeVal, this.cX - this.sizeVal);
@@ -97,7 +98,6 @@ export class BackgroundService {
             case 'gray' :
             this.rSquare(this.x,this.y, this.sizeVal, this.angle, this.boxColor1);
             break;
-            
             case 'white' :
             this.rSquare(this.x,this.y, this.sizeVal, this.angle, this.boxColor2);
             break;
@@ -107,14 +107,13 @@ export class BackgroundService {
         }
 
         move() {
-          //update x
+          // update x
           this.sideAcc_0 = this.sideAcc_0 + this.sideAcc;
-          this.x = this.x_0 + 15 * Math.sin(this.sideAcc_0/180*Math.PI)
-          
-          //update y
+          this.x = this.x_0 + 15 * Math.sin(this.sideAcc_0/180* Math.PI)
+          // update y
           this.y = this.y - this.upVal;
 
-          //update angle
+          // update angle
           this.angle = this.angle + this.angleAcc;
 
           if ( (this.x - this.sizeVal) > this.cX || (this.y + this.sizeVal) < 0 ) {
@@ -122,27 +121,27 @@ export class BackgroundService {
           } else { }
         }
 
-        rSquare(x,y,size,angle,color) {
+        rSquare(x ,y, size, angle, color) {
           p.noStroke();
 
           // if(p.mouseX > x-50 && p.mouseX < x+50 && p.mouseY > y - 50 && p.mouseY < y + 50) {
-          if(p.mouseX > x-30 && p.mouseX < x+30) {
+          if (p.mouseX > x - 30 && p.mouseX < x + 30) {
             p.fill(this.highlight);
           } else {
             p.fill(color);
           }
 
-          let A = 0.8*size*Math.cos(angle*Math.PI/180);
-          let B = 0.8*size*Math.sin(angle*Math.PI/180);
+          const A = 0.8 * size * Math.cos(angle * Math.PI / 180);
+          const B = 0.8 * size * Math.sin(angle * Math.PI / 180);
 
-          let x1 = x - A;
-          let y1 = y - B;
-          let x2 = x + B;
-          let y2 = y - A;
-          let x3 = x + A;
-          let y3 = y + B;
-          let x4 = x - B;
-          let y4 = y + A;
+          const x1 = x - A;
+          const y1 = y - B;
+          const x2 = x + B;
+          const y2 = y - A;
+          const x3 = x + A;
+          const y3 = y + B;
+          const x4 = x - B;
+          const y4 = y + A;
 
           p.quad(x1,y1,x2,y2,x3,y3,x4,y4);
 
@@ -158,8 +157,8 @@ export class BackgroundService {
 
         eyeArr : any[] = [];
         col1 : string;
-        col2 : string;
-        
+        col2: string;
+
         constructor(eyeNum : number, color1, color2) {
           this.col1 = color1;
           this.col2 = color2;
@@ -167,7 +166,7 @@ export class BackgroundService {
         }
 
         start(num) {
-          
+
           for (let i = 0; i < num; i++ ) {
             this.eyeArr[i] = new Box(p.windowWidth, p.windowHeight, this.col1, this.col2 );
           }
@@ -178,10 +177,10 @@ export class BackgroundService {
         }
 
       }
-      
-      
-    }
-      
-    let myp5 = new p5(sketch);
+
+
+    };
+
+    const myp5 = new p5(sketch);
   }
 }
